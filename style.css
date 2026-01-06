@@ -102,12 +102,6 @@ body {
   color: #ef4444;
   margin: 6px 0 10px;
 }
-
-.login-hint {
-  margin-top: 16px;
-  font-size: 13px;
-  color: var(--text-muted);
-}
 .login-hint code {
   background: var(--bg-soft);
   padding: 2px 4px;
