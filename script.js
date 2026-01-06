@@ -92,7 +92,7 @@ function initDashboardPage() {
       localStorage.removeItem("loggedIn");
       localStorage.removeItem("role");
       logoutModal.style.display = "none";
-      redirectWithAnimation("login.html");
+      redirectWithAnimation("index.html");
     });
   }
 
