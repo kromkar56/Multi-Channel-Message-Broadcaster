@@ -174,6 +174,25 @@ function initDashboardPage() {
   const charCount = document.getElementById("charCount");
   const sendBtn = document.getElementById("sendBtn");
   const logContainer = document.getElementById("logContainer");
+  // --- MESSAGE COUNT ---
+const messageCountEl = document.getElementById("messageCount");
+
+// load saved count or default
+let messageCount = Number(localStorage.getItem("messageCount")) || 1245890;
+
+if (messageCountEl) {
+  messageCountEl.textContent = messageCount.toLocaleString();
+}
+
+// helper to increase count
+function increaseMessageCount(by = 1) {
+  messageCount += by;
+  localStorage.setItem("messageCount", messageCount);
+  if (messageCountEl) {
+    messageCountEl.textContent = messageCount.toLocaleString();
+  }
+}
+
 
   if (messageInput && charCount) {
     messageInput.addEventListener("input", () => {
@@ -223,13 +242,13 @@ function initDashboardPage() {
       }
 
       channels.forEach((channel) => {
-        const sendingText = `Sending to ${channel}...`;
-        addLogEntry(sendingText);
-
         setTimeout(() => {
           addLogEntry(`✅ Message sent successfully to ${channel}!`);
         }, 700);
       });
+      // ✅ INCREASE MESSAGE COUNT
+increaseMessageCount(channels.length);
+
 
       messageInput.value = "";
       charCount.textContent = "0";
