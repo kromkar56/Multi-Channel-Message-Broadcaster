@@ -5,20 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CheerioAI – Broadcasting Dashboard</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Chart.js CDN MUST be before script.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- Role-based access: admin only -->
   <script>
     const role = localStorage.getItem("role");
     const loggedIn = localStorage.getItem("loggedIn");
     if (!loggedIn || role !== "admin") {
-      window.location.href = "login.html";
+      window.location.href = "index.html";
     }
   </script>
 </head>
 <body class="dashboard-body">
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="logo">Cheerio <span>AI</span></div>
 <nav class="menu">
@@ -31,15 +28,13 @@
 </nav>
 
     <div class="quick-actions">
-      <h4>Quick Actions</h4>
-      <button class="primary-btn">New Campaign</button>
-      <button class="secondary-btn">Schedule Message</button>
-    </div>
+  <button id="newCampaignBtn" class="primary-btn">New Campaign</button>
+  <button id="scheduleBtn" class="primary-btn">Schedule Message</button>
+</div>
+
   </aside>
 
-  <!-- MAIN CONTENT -->
   <main class="main">
-    <!-- TOPBAR -->
     <header class="topbar">
       <div>
         <div class="top-title">Dashboard Overview</div>
@@ -71,7 +66,6 @@
       </div>
     </header>
 
-    <!-- STATS CARDS -->
     <section class="stats-grid">
       <article class="card stat-card">
         <div class="stat-icon">📨</div>
@@ -273,6 +267,28 @@
       </div>
     </div>
   </div>
+  <!-- ================= MODALS ================= -->
+
+<div id="campaignModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close-icon" aria-label="Close">&times;</button>
+    <h3>New Campaign</h3>
+    <input type="text" placeholder="Campaign Name">
+    <textarea placeholder="Message"></textarea>
+    <button class="modal-close primary-btn">Create</button>
+  </div>
+</div>
+
+<div id="scheduleModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close-icon" aria-label="Close">&times;</button>
+    <h3>Schedule Message</h3>
+    <input type="datetime-local">
+    <textarea placeholder="Message"></textarea>
+    <button class="modal-close primary-btn">Schedule</button>
+  </div>
+</div>
+
 
   <script src="script.js"></script>
 </body>

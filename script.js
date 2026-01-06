@@ -264,6 +264,36 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+document.addEventListener("DOMContentLoaded", () => {
+
+  const newCampaignBtn = document.getElementById("newCampaignBtn");
+  const scheduleBtn = document.getElementById("scheduleBtn");
+
+  const campaignModal = document.getElementById("campaignModal");
+  const scheduleModal = document.getElementById("scheduleModal");
+
+  const openModal = modal => {
+    if (modal) modal.style.display = "flex";
+  };
+
+  const closeModals = () => {
+    document.querySelectorAll(".modal").forEach(m => {
+      m.style.display = "none";
+    });
+  };
+
+  // BUTTON CLICKS
+  newCampaignBtn?.addEventListener("click", () => openModal(campaignModal));
+  scheduleBtn?.addEventListener("click", () => openModal(scheduleModal));
+
+  // CLOSE MODAL BUTTONS
+  document.querySelectorAll(".modal-close, .modal-close-icon").forEach(btn => {
+  btn.addEventListener("click", closeModals);
+});
+
+});
+
+
 
 
 // ---------- INIT ----------
